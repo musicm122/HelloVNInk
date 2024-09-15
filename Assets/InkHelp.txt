@@ -1,0 +1,50 @@
+ink beginner guide
+This is a much more hand-held than the advanced guide. Hopefully you won't need it after the IGA class, but it doesn't hurt to have a refresher!
+https://www.inklestudios.com/ink/web-tutorial/
+
+ink advanced guide
+I tend to find that this is helpful for skimming through. You shouldn't memorize everything, but this is still super helpful for finding help on specific topics (like conditional choices).
+https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md
+
+Custom Tags
+
+These tags are custom made by IGA to allow for ink to act a little more like a visual novel or dating sim.
+Be sure to include the custom components on the game object that has your StoryManager!
+You can easily add the components by right-clicking on the StoryManager component and clicking "Add Basic Tag Handlers."
+You can use these tags by writing something like this above one of your lines of text:
+#SetImage Portrait Characters/Boy/Smiling1
+For images and sounds to be accessible by these tags, they need to be included in your game's /Resources/ folder and have no spaces in the file's name or in one of the folder's names!
+For example, if you want to reference an image at "/Resources/Images/Backgrounds/SunnyDay.png", then you would reference the image by writing "Images/Backgrounds/SunnyDay". Be sure to remove the "Resources" folder at the front as well as the file extension!
+
+SetImage takes 2 arguments:
+#SetImage <name of game object in the scene that has an Image component> <reference to image file>
+It replaces an image's sprite and makes it visible.
+Examples:
+- #SetImage LeftPortrait Cindy/Crying1
+- #SetImage LocationIcon Locations/Boston
+
+ClearImage takes 1 argument:
+#ClearImage <name of game object in the scene that has an Image component>
+It makes an image hidden.
+Examples:
+- #ClearImage LeftPortrait
+- #ClearImage LocationIcon
+
+PlaySound takes 2 arguments:
+#PlaySound <name of game object in the scene that has an AudioSource component> <reference to audio clip file>
+It plays a sound through the given audio source (so you can configure the audio source to change the pitch/volume etc.).
+Examples:
+- #PlaySound Music Music/SleepTimeSong
+- #PlaySound Voice VoiceLines/Sam/HeyHowAreYou
+
+StopSound takes 1 argument:
+#StopSound <name of game object in the scene that has an AudioSource component>
+It stops all sounds coming from that audio source.
+Examples:
+- StopSound Music
+- StopSound Voice
+
+Bonus syntax: If you have a Speaker text referenced in your StoryManager, you can designate a speaker with each line of text using a colon, like so:
+Willem: Why hello there, it is I: Willem the wizard! How'de do?
+If you don't want there to be a speaker but you still want to have a colon in the text, you can abuse the syntax like so:
+:Suddenly, you notice an object in the room: an unreasonably-large wizard hat of many, many colors.
